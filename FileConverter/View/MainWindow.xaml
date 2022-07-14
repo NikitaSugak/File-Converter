@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileConverter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="File converter" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-
+        <Menu Height="20" VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Open File"  Click="menuOpenFile_Click" ></MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" Click="menuExit_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
