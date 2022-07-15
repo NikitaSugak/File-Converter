@@ -1,4 +1,5 @@
-﻿using FileConverter.Model;
+﻿using FileConverter.Controller.Reader;
+using FileConverter.Model;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -36,19 +37,24 @@ namespace FileConverter
             if (openFileDialog.ShowDialog() == true)
             {
                 string filename = openFileDialog.FileName;
+                IReader.filename = filename;
+
+                RegularExpression.IsEnabled = true;
+                XmlDocument.IsEnabled = true;
+                Recognize.IsEnabled = true;
             }
-
-            News news = new News("huogui");
-             
-
-
         }
-
-        
 
         private void menuExit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Recognize_Click(object sender, RoutedEventArgs e)
+        {
+            ReaderModelData reader = new ReaderModelData();
+            reader.Read();
+            
         }
     }
 }

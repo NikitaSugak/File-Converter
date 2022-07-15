@@ -8,11 +8,20 @@ namespace FileConverter.Model
 {
     internal class News
     {
-        public string Name { get; }
+        public string Title { get; }
+        public string Link { get; }
+        public string Description { get; }
+        public string Category { get; }
+        public string PubDate { get; }
 
-        public News(string name)
+
+        public News(string title, string link, string description, string category, string pubDate)
         {
-            Name = name;
+            Title = title;
+            Link = link;
+            Description = description;
+            Category = category;
+            PubDate = pubDate;
         }
     }
 }

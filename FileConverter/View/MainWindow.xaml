@@ -7,12 +7,16 @@
         mc:Ignorable="d"
         Title="File converter" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Menu Height="20" VerticalAlignment="Top">
+        <Menu Height="20" VerticalAlignment="Top" Background="White">
             <MenuItem Header="File">
                 <MenuItem Header="Open File"  Click="menuOpenFile_Click" ></MenuItem>
                 <Separator />
                 <MenuItem Header="Exit" Click="menuExit_Click"></MenuItem>
             </MenuItem>
         </Menu>
+        <RadioButton x:Name="RegularExpression" GroupName="Recognition" Content="RegularExpression" HorizontalAlignment="Left" Margin="84,97,0,0" VerticalAlignment="Top"  IsEnabled="False" />
+        <RadioButton x:Name="XmlDocument" GroupName="Recognition" Content="XmlDocument" HorizontalAlignment="Left" Margin="84,112,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <Button x:Name="Recognize" Content="Recognize" HorizontalAlignment="Left" Margin="86,132,0,0" VerticalAlignment="Top" Height="27" Width="87" IsEnabled="False" Click="Recognize_Click"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="95,238,0,0" VerticalAlignment="Top" Height="26" Width="75" Click="Button_Click"/>
     </Grid>
 </Window>
