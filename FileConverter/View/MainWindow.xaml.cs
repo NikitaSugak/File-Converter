@@ -1,4 +1,5 @@
 ﻿using FileConverter.Controller.Reader;
+using FileConverter.Controller.Save;
 using FileConverter.Model;
 using Microsoft.Win32;
 using System;
@@ -36,8 +37,7 @@ namespace FileConverter
 
             if (openFileDialog.ShowDialog() == true)
             {
-                string filename = openFileDialog.FileName;
-                IReader.filename = filename;
+                IReader.filename = openFileDialog.FileName;
 
                 RegularExpression.IsEnabled = true;
                 XmlDocument.IsEnabled = true;
@@ -55,6 +55,25 @@ namespace FileConverter
             ReaderModelData reader = new ReaderModelData();
             reader.Read();
             
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            ISave.OpenFileDialogScreen();
+
+            if (Excel.IsChecked == true)
+            {
+            }
+            else if (Word.IsChecked == true)
+            {
+
+            }
+            else if (Text.IsChecked == true)
+            {
+                _ = new SaveInText();
+
+            }
+
         }
     }
 }

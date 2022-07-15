@@ -17,6 +17,9 @@
         <RadioButton x:Name="RegularExpression" GroupName="Recognition" Content="RegularExpression" HorizontalAlignment="Left" Margin="84,97,0,0" VerticalAlignment="Top"  IsEnabled="False" />
         <RadioButton x:Name="XmlDocument" GroupName="Recognition" Content="XmlDocument" HorizontalAlignment="Left" Margin="84,112,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <Button x:Name="Recognize" Content="Recognize" HorizontalAlignment="Left" Margin="86,132,0,0" VerticalAlignment="Top" Height="27" Width="87" IsEnabled="False" Click="Recognize_Click"/>
-        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="95,238,0,0" VerticalAlignment="Top" Height="26" Width="75" Click="Button_Click"/>
+        <RadioButton x:Name="Excel" Content="Excel (.xlsx)" GroupName="Conversion" HorizontalAlignment="Left" Margin="82,190,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Word" Content="Word (.docx)" GroupName="Conversion" HorizontalAlignment="Left" Margin="86,0,0,0" VerticalAlignment="Center"/>
+        <RadioButton x:Name="Text" Content="Text (.txt)"  GroupName="Conversion" HorizontalAlignment="Left" Margin="82,230,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="92,253,0,0" VerticalAlignment="Top" Height="26" Width="75" Click="Save_Click"/>
     </Grid>
 </Window>

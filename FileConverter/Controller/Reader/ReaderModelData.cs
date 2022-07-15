@@ -20,6 +20,7 @@ namespace FileConverter.Controller.Reader
                 xmlFile.Load(IReader.filename);
                 if (xmlFile.DocumentElement != null)
                 {
+                    IReader.news.Clear();
                     bool error = false;
                     for (int i = 0; i < xmlFile.DocumentElement.ChildNodes.Count; i++)
                     {
@@ -28,27 +29,28 @@ namespace FileConverter.Controller.Reader
                         string link = "Default link";
                         string description = "Default description";
                         string category = "Default category";
-                        string pubDate = "Default pubDate";
+                        string pubDate = "0, 0, 0";
                         try { title = xmlNode["title"].InnerText; } catch { error = true; }
                         try { link = xmlNode["link"].InnerText; } catch { error = true; }
                         try { description = xmlNode["description"].InnerText; } catch { error = true; }
                         try { category = xmlNode["category"].InnerText; } catch { error = true; }
                         try { pubDate = xmlNode["pubDate"].InnerText; } catch { error = true; }
                         News news = new News(title, link, description, category, pubDate);
+                        IReader.news.Add(news);
                     }
-
 
                     if (error)
                     {
-                        MessageBox.Show(
-                       "Один или несколько тегов были не найдены. Применены значения по умолчанию",
-                       "Сообщение");
+                        MessageBox.Show("One or more tags were not found. Default values ​​applied",
+                                        "Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Recognition was successful. now you can save the file",
+                                        "Message");
                     }
                 }
-            }
-            //foreach (XmlNode xmlNode in xmlFile.DocumentElement.ChildNodes[2].ChildNodes[0].ChildNodes)
-            //Console.WriteLine(xmlNode.Attributes["currency"].Value + ": " + xmlNode.Attributes["rate"].Value);
-
+            }            
         }
     }
 }
