@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using System.Text;
 using FileConverter.Controller.Reader;
 
 namespace FileConverter.Controller.Save
@@ -18,11 +13,11 @@ namespace FileConverter.Controller.Save
             for (int i = 0; i < IReader.news.Count; i++)
             {
                 str.Append($"News #{i + 1}\n");
-                str.Append($"\t Title: {IReader.news[i].Title} \n");
-                str.Append($"\t Link: {IReader.news[i].Link} \n");
-                str.Append($"\t Description: {IReader.news[i].Description} \n");
-                str.Append($"\t Category: {IReader.news[i].Category} \n");
-                str.Append($"\t PubDate: {IReader.news[i].PubDate} \n");
+                str.Append($"\tTitle: {IReader.news[i].Title}\n");
+                str.Append($"\tLink: {IReader.news[i].Link}\n");
+                str.Append($"\tDescription: {IReader.news[i].Description}\n");
+                str.Append($"\tCategory: {IReader.news[i].Category}\n");
+                str.Append($"\tDate: {IReader.news[i].PubDate}\n");
             }
 
             text = str.ToString();
@@ -36,12 +31,10 @@ namespace FileConverter.Controller.Save
             }
         }
 
-        public SaveInText()
+        public void Save()
         {
             CreateFile();
             SaveFile();
         }
-
-
     }
 }

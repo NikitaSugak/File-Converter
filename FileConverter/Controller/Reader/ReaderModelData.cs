@@ -1,9 +1,4 @@
 ﻿using FileConverter.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
 
@@ -22,6 +17,7 @@ namespace FileConverter.Controller.Reader
                 {
                     IReader.news.Clear();
                     bool error = false;
+
                     for (int i = 0; i < xmlFile.DocumentElement.ChildNodes.Count; i++)
                     {
                         XmlNode? xmlNode = xmlFile.DocumentElement.ChildNodes[i];
@@ -46,7 +42,7 @@ namespace FileConverter.Controller.Reader
                     }
                     else
                     {
-                        MessageBox.Show("Recognition was successful. now you can save the file",
+                        MessageBox.Show("Recognition was successful. Now you can save the file",
                                         "Message");
                     }
                 }

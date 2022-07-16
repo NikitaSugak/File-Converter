@@ -19,3 +19,6 @@ C:\Users\Nikita\source\repos\C#\FileConverter\FileConverter\obj\Debug\net6.0-win
 C:\Users\Nikita\source\repos\C#\FileConverter\FileConverter\obj\Debug\net6.0-windows\ref\FileConverter.dll
 C:\Users\Nikita\source\repos\C#\FileConverter\FileConverter\obj\Debug\net6.0-windows\View\MainWindow.g.cs
 C:\Users\Nikita\source\repos\C#\FileConverter\FileConverter\obj\Debug\net6.0-windows\View\MainWindow.baml
+C:\Users\Nikita\source\repos\C#\FileConverter\FileConverter\obj\Debug\net6.0-windows\Interop.Microsoft.Office.Interop.Word.dll
+C:\Users\Nikita\source\repos\C#\FileConverter\FileConverter\obj\Debug\net6.0-windows\FileConverter.csproj.ResolveComReference.cache
+C:\Users\Nikita\source\repos\C#\FileConverter\FileConverter\obj\Debug\net6.0-windows\Interop.Microsoft.Office.Interop.Excel.dll

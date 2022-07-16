@@ -5,6 +5,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,6 @@ namespace FileConverter
 
                 RegularExpression.IsEnabled = true;
                 XmlDocument.IsEnabled = true;
-                Recognize.IsEnabled = true;
             }
         }
 
@@ -54,26 +54,62 @@ namespace FileConverter
         {
             ReaderModelData reader = new ReaderModelData();
             reader.Read();
-            
+
+            ISave.Filename = null;
+            Text.IsEnabled = true;
+            Excel.IsEnabled = true;
+            Word.IsEnabled = true;
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        async private void Save_Click(object sender, RoutedEventArgs e)
         {
-            ISave.OpenFileDialogScreen();
-
             if (Excel.IsChecked == true)
             {
+                ISave.OpenFileDialogScreen("Document Excel", "xlsx");
+                if (ISave.Create)
+                {
+                    SaveInExcel excel = new SaveInExcel();
+                    await Task.Run(() => excel.Save());
+                }
             }
             else if (Word.IsChecked == true)
             {
-
+                ISave.OpenFileDialogScreen("Document Word", "docx");
+                if (ISave.Create)
+                {
+                    SaveInWord word = new SaveInWord();
+                    await Task.Run(() => word.Save());
+                }
             }
             else if (Text.IsChecked == true)
             {
-                _ = new SaveInText();
+                ISave.OpenFileDialogScreen("Text file", "txt");
+                if (ISave.Create)
+                {
+                    SaveInText text = new SaveInText();
+                    await Task.Run(() => text.Save());
+                }
+            }
+        }
 
+        private void Recognition_Checked(object sender, RoutedEventArgs e)
+        {
+            Recognize.IsEnabled = true;
+        }
+
+        private void Conversion_Checked(object sender, RoutedEventArgs e)
+        {
+            Save.IsEnabled = true;
+        }
+
+        private void Closing_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(ISave.Filename))
+            {
+                MessageBox.Show("Добавить подтверждение закрытия, если файл не сохранён", "Message");
             }
 
+            Application.Current.Shutdown();
         }
     }
 }
