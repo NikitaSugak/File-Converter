@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using FileConverter.Controller.Reader;
 
 namespace FileConverter.Controller.Save
@@ -10,6 +11,7 @@ namespace FileConverter.Controller.Save
         {
             StringBuilder str = new StringBuilder();
 
+            CultureInfo culture = new CultureInfo("en-US");
             for (int i = 0; i < IReader.news.Count; i++)
             {
                 str.Append($"News #{i + 1}\n");
@@ -17,7 +19,7 @@ namespace FileConverter.Controller.Save
                 str.Append($"\tLink: {IReader.news[i].Link}\n");
                 str.Append($"\tDescription: {IReader.news[i].Description}\n");
                 str.Append($"\tCategory: {IReader.news[i].Category}\n");
-                str.Append($"\tDate: {IReader.news[i].PubDate}\n");
+                str.Append($"\tDate: {IReader.news[i].PubDate.ToString("ddd, dd MMM yyyy HH:mm:ss", culture)}\n");
             }
 
             text = str.ToString();

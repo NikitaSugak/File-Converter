@@ -1,5 +1,7 @@
 ﻿using FileConverter.Controller.Reader;
 using Microsoft.Office.Interop.Excel;
+using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Windows;
 using Application = Microsoft.Office.Interop.Excel.Application;
 
@@ -10,6 +12,7 @@ namespace FileConverter.Controller.Save
         string? text { set; get; }
 
         Application app = new Application();
+
         Workbook workbook;
 
         public void CreateFile()
@@ -39,6 +42,7 @@ namespace FileConverter.Controller.Save
             cell.Value2 = "Date";
             cell.Font.Bold = true;
 
+            CultureInfo culture = new CultureInfo("en-US");
             for (int i = 0; i < IReader.news.Count; i++)
             {
                 cell = sheet.get_Range($"A{i + 2}", $"A{i + 2}");
@@ -67,7 +71,7 @@ namespace FileConverter.Controller.Save
                 cell.WrapText = true;
                 cell.VerticalAlignment = XlVAlign.xlVAlignTop;
                 cell = sheet.get_Range($"F{i + 2}", $"F{i + 2}");
-                cell.Value2 = IReader.news[i].PubDate;
+                cell.Value2 = IReader.news[i].PubDate.ToString("ddd, dd MMM yyyy HH:mm:ss", culture);
                 cell.ColumnWidth = 25;
                 cell.Font.Italic = true;
                 cell.VerticalAlignment = XlVAlign.xlVAlignTop;
@@ -82,7 +86,6 @@ namespace FileConverter.Controller.Save
                 try
                 {
                     workbook.SaveAs(ISave.Filename);
-                    
                 }
                 catch
                 {
@@ -92,7 +95,6 @@ namespace FileConverter.Controller.Save
 
             workbook.Close();
             app.Quit();
-            
         }
 
         public void Save()

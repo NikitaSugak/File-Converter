@@ -1,5 +1,6 @@
 ﻿using FileConverter.Controller.Reader;
 using Microsoft.Office.Interop.Word;
+using System.Globalization;
 using System.Windows;
 using Application = Microsoft.Office.Interop.Word.Application;
 
@@ -20,6 +21,7 @@ namespace FileConverter.Controller.Save
             Range range = doc.Range(0, 0);
             range.Text = $"NEWS\n";
 
+            CultureInfo culture = new CultureInfo("en-US");
             for (int i = 0; i < IReader.news.Count; i++)
             {
                 range = doc.Range(range.End, range.End);
@@ -63,7 +65,7 @@ namespace FileConverter.Controller.Save
                 range.Bold = 20;
 
                 range = doc.Range(range.End, range.End);
-                range.Text = IReader.news[i].PubDate + "\n";
+                range.Text = IReader.news[i].PubDate.ToString("ddd, dd MMM yyyy HH:mm:ss", culture) + "\n";
                 range.Bold = 0;
             }
         }
@@ -76,7 +78,6 @@ namespace FileConverter.Controller.Save
                 {
                     doc.SaveAs2(FileName: ISave.Filename);
                     doc.Close();
-
                     app.Quit();
                 }
                 catch
@@ -84,14 +85,12 @@ namespace FileConverter.Controller.Save
                     MessageBox.Show("This file is open. Please close this file and try again", "Message");
                 }
             }
-
         }
 
         public void Save()
         {
             CreateFile();
             SaveFile();
-            
         }
     }
 }

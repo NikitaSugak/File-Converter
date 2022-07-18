@@ -16,6 +16,7 @@ namespace FileConverter.Controller.Save
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.DefaultExt = "txt";
             saveFileDialog.AddExtension = true;
+
             if (saveFileDialog.ShowDialog() == true)
             {
                 Filename = saveFileDialog.FileName;

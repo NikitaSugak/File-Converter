@@ -1,23 +1,11 @@
 ﻿using FileConverter.Controller.Reader;
 using FileConverter.Controller.Save;
-using FileConverter.Model;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+//using System.Windows.Forms
 
 namespace FileConverter
 {
@@ -50,10 +38,21 @@ namespace FileConverter
             Application.Current.Shutdown();
         }
 
-        private void Recognize_Click(object sender, RoutedEventArgs e)
+        async private void Recognize_Click(object sender, RoutedEventArgs e)
         {
-            ReaderModelData reader = new ReaderModelData();
-            reader.Read();
+            IReader.news.Clear();
+
+            if (RegularExpression.IsChecked == true)
+            {
+                ReaderRegularExpression reader = new ReaderRegularExpression();
+                await Task.Run(() => reader.Read());
+            }
+
+            if (XmlDocument.IsChecked == true)
+            {
+                ReaderModelData reader = new ReaderModelData();
+                await Task.Run(() => reader.Read());
+            }
 
             ISave.Filename = null;
             Text.IsEnabled = true;
@@ -104,12 +103,24 @@ namespace FileConverter
 
         private void Closing_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(ISave.Filename))
+            if (IReader.news.Count != 0 && !File.Exists(ISave.Filename))
             {
-                MessageBox.Show("Добавить подтверждение закрытия, если файл не сохранён", "Message");
+                MessageBoxResult result = MessageBox.Show("Data not saved. Do you really want to leave?", "Message", MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    Application.Current.Shutdown();
+                }
+                else
+                {
+                    Application.Current.Exit();
+                }
+            }
+            else
+            {
+                Application.Current.Shutdown();
             }
 
-            Application.Current.Shutdown();
         }
     }
 }

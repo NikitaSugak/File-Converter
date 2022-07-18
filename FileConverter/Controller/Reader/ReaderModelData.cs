@@ -15,7 +15,6 @@ namespace FileConverter.Controller.Reader
                 xmlFile.Load(IReader.filename);
                 if (xmlFile.DocumentElement != null)
                 {
-                    IReader.news.Clear();
                     bool error = false;
 
                     for (int i = 0; i < xmlFile.DocumentElement.ChildNodes.Count; i++)
