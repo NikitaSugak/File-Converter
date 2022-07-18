@@ -5,7 +5,6 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
-//using System.Windows.Forms
 
 namespace FileConverter
 {
@@ -105,22 +104,19 @@ namespace FileConverter
         {
             if (IReader.news.Count != 0 && !File.Exists(ISave.Filename))
             {
-                MessageBoxResult result = MessageBox.Show("Data not saved. Do you really want to leave?", "Message", MessageBoxButton.OKCancel);
+                MessageBoxResult result = MessageBox.Show("Data not saved. Do you really want to leave?", 
+                                                          "Message", 
+                                                          MessageBoxButton.OKCancel);
 
                 if (result == MessageBoxResult.OK)
                 {
                     Application.Current.Shutdown();
-                }
-                else
-                {
-                    Application.Current.Exit();
                 }
             }
             else
             {
                 Application.Current.Shutdown();
             }
-
         }
     }
 }

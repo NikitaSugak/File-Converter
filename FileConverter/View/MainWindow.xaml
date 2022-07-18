@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileConverter"
         mc:Ignorable="d"
-        Title="File converter" Height="450" Width="800" WindowStartupLocation="CenterScreen" Closing="Closing_Click">
+        Title="File converter" Height="450" Width="400" WindowStartupLocation="CenterScreen" Closing="Closing_Click">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
         <Menu Height="20" VerticalAlignment="Top" Background="White">
             <MenuItem Header="File">
                 <MenuItem Header="Open File"  Click="menuOpenFile_Click" ></MenuItem>
@@ -14,12 +18,12 @@
                 <MenuItem Header="Exit" Click="menuExit_Click"></MenuItem>
             </MenuItem>
         </Menu>
-        <RadioButton x:Name="RegularExpression" GroupName="Recognition" Content="RegularExpression" HorizontalAlignment="Left" Margin="84,97,0,0" VerticalAlignment="Top"  IsEnabled="False" Checked="Recognition_Checked" />
-        <RadioButton x:Name="XmlDocument" GroupName="Recognition" Content="XmlDocument" HorizontalAlignment="Left" Margin="84,112,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="Recognition_Checked"/>
-        <Button x:Name="Recognize" Content="Recognize" HorizontalAlignment="Left" Margin="86,132,0,0" VerticalAlignment="Top" Height="27" Width="87" IsEnabled="False" Click="Recognize_Click"/>
-        <RadioButton x:Name="Excel" Content="Excel (.xlsx)" GroupName="Conversion" HorizontalAlignment="Left" Margin="82,190,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="Conversion_Checked"/>
-        <RadioButton x:Name="Word" Content="Word (.docx)" GroupName="Conversion" HorizontalAlignment="Left" Margin="82,0,0,0" VerticalAlignment="Center" IsEnabled="False" Checked="Conversion_Checked"/>
-        <RadioButton x:Name="Text" Content="Text (.txt)"  GroupName="Conversion" HorizontalAlignment="Left" Margin="82,230,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="Conversion_Checked"/>
-        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="92,253,0,0" VerticalAlignment="Top" Height="26" Width="75" Click="Save_Click" IsEnabled="False"/>
+        <RadioButton x:Name="RegularExpression" GroupName="Recognition" Content="RegularExpression" HorizontalAlignment="Left" Margin="80,90,0,0" VerticalAlignment="Top"  IsEnabled="False" Checked="Recognition_Checked" Height="15" Width="120" />
+        <RadioButton x:Name="XmlDocument" GroupName="Recognition" Content="XmlDocument" HorizontalAlignment="Left" Margin="80,110,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="Recognition_Checked" Height="15" Width="120"/>
+        <Button x:Name="Recognize" Content="Recognize" HorizontalAlignment="Left" Margin="90,130,0,0" VerticalAlignment="Top" Height="30" Width="90" IsEnabled="False" Click="Recognize_Click"/>
+        <RadioButton x:Name="Excel" Content="Excel (.xlsx)" GroupName="Conversion" HorizontalAlignment="Left" Margin="80,190,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="Conversion_Checked" Height="15" Width="120"/>
+        <RadioButton x:Name="Word" Content="Word (.docx)" GroupName="Conversion" HorizontalAlignment="Left" Margin="80,210,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="Conversion_Checked" Height="15" Width="120"/>
+        <RadioButton x:Name="Text" Content="Text (.txt)"  GroupName="Conversion" HorizontalAlignment="Left" Margin="80,230,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="Conversion_Checked" Height="15" Width="120"/>
+        <Button x:Name="Save" Content="Save" HorizontalAlignment="Left" Margin="90,250,0,0" VerticalAlignment="Top" Height="30" Width="90" Click="Save_Click" IsEnabled="False"/>
     </Grid>
 </Window>
